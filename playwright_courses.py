@@ -42,4 +42,3 @@ with sync_playwright() as playwright:
     results_from_the_load_test = page.get_by_test_id('courses-list-empty-view-description-text')
     expect(results_from_the_load_test).to_be_visible()
     expect(results_from_the_load_test).to_have_text('Results from the load test pipeline will be displayed here')
-   
