@@ -8,18 +8,6 @@ def test_empty_courses_list(chromium_page_with_state: Page):
     chromium_page_with_state.goto(
         'https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/registration')
 
-    email_input = chromium_page_with_state.get_by_test_id('registration-form-email-input').locator('input')
-    email_input.fill('user.name@gmail.com')
-
-    username_input = chromium_page_with_state.get_by_test_id('registration-form-username-input').locator('input')
-    username_input.fill('username')
-
-    password_input = chromium_page_with_state.get_by_test_id('registration-form-password-input').locator('input')
-    password_input.fill('password')
-
-    registration_button = chromium_page_with_state.get_by_test_id('registration-page-registration-button')
-    registration_button.click()
-
     chromium_page_with_state.goto('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses')
 
     courses_title = chromium_page_with_state.get_by_test_id('courses-list-toolbar-title-text')
