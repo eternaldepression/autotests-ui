@@ -2,12 +2,12 @@ import pytest
 
 
 @pytest.fixture
-def clear_books_database():
+def clear_books_database() -> None:
     print("[FIXTURE] Удаляет все данные из базы данных")
 
 
 @pytest.fixture
-def fill_books_database():
+def fill_books_database() -> None:
     print("[FIXTURE] Создаем новые данные в базе данных")
 
 
