@@ -7,6 +7,8 @@ import pytest
 @pytest.mark.parametrize("email, password",
                          [("user.name@gmail.com", "password"), ("user.name@gmail.com", "  "), ("  ", "password")])
 
+                        #Unicode-символы в консоли, полагаю, из-за кириллицы
+
                          #ids=["Проверяем, что пользователь не может войти в систему с невалидными email и password",
                            #"Проверяем, что пользователь не может войти в систему с невалидным email и пустым password",
                             #"Проверяем, что пользователь не может войти в систему с пустым email и невалидным password", ])
