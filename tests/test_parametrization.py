@@ -31,7 +31,6 @@ users = {
     '+70000000011': 'User with money on bank account',
     '+70000000022': 'User without money on bank account',
     '+70000000033': 'User with operations on bank account'
-
 }
 
 
