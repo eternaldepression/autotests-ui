@@ -35,7 +35,7 @@ class CreateCoursePage(BasePage):
 
         self.create_course_title_input = page.get_by_test_id('create-course-form-title-input').locator('input')
         self.create_course_estimated_time_input = (
-            page.get_by_test_id('create-course-form-description-input').locator('input')
+            page.get_by_test_id('create-course-form-estimated-time-input').locator('input')
         )
         self.create_course_description_textarea = (
             page.get_by_test_id('create-course-form-description-input').locator('textarea').first
@@ -60,7 +60,7 @@ class CreateCoursePage(BasePage):
         self.create_course_button.click()
 
     def check_visible_create_course_button(self):
-        expect(self.check_visible_create_course_button).to_be_visible()
+        expect(self.create_course_button).to_be_visible()
 
     def check_disabled_create_course_button(self):
         expect(self.create_course_button).to_be_disabled()
@@ -161,7 +161,7 @@ class CreateCoursePage(BasePage):
         expect(self.exercises_empty_view_icon).to_be_visible()
 
         expect(self.exercises_empty_view_title).to_be_visible()
-        expect(self.preview_empty_view_title).to_have_text('There is no exercises')
+        expect(self.exercises_empty_view_title).to_have_text('There is no exercises')
 
         expect(self.exercises_empty_view_description).to_be_visible()
         expect(self.exercises_empty_view_description).to_have_text(

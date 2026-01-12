@@ -24,7 +24,7 @@ class CoursesListPage(BasePage):
         self.empty_view_title = page.get_by_test_id('courses-list-empty-view-title-text')
         self.empty_view_description = page.get_by_test_id('courses-list-empty-view-description-text')
 
-    def check_visible_and_text_courses_title(self):
+    def check_visible_courses_title(self):
         expect(self.courses_title).to_be_visible()
         expect(self.courses_title).to_have_text('Courses')
 
@@ -39,10 +39,10 @@ class CoursesListPage(BasePage):
             'Results from the load test pipeline will be displayed here'
         )
 
-    def check_visible_create_courses_button(self):
+    def check_visible_create_course_button(self):
         expect(self.create_course_button).to_be_visible()
 
-    def click_create_courses_button(self):
+    def click_create_course_button(self):
         expect(self.create_course_button).to_be_visible()
 
     def check_visible_course_card(self, index: int, title: str, max_score: str, min_score: str, estimated_time: str):
