@@ -25,4 +25,4 @@ class SidebarComponent(BaseComponent):
         self.courses_list_item.navigate(re.compile(r".*/#/courses"))
 
     def click_dashboard(self):
-        self.courses_list_item.navigate(re.compile(r".*/#/dashboard"))
+        self.dashboard_list_item.navigate(re.compile(r".*/#/dashboard"))
