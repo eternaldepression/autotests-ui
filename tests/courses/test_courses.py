@@ -50,3 +50,38 @@ class TestCourses:
             min_score="10",
             estimated_time="2 weeks"
         )
+
+    def test_edit_course(self, create_courses_page: CreateCoursePage, courses_list_page: CoursesListPage):
+        create_courses_page.visit('https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create')
+        create_courses_page.create_course_form_component.fill(
+            title="Pytest",
+            estimated_time="9 weeks",
+            description="Pytest",
+            max_score="99",
+            min_score="9"
+        )
+        create_courses_page.image_upload_widget.upload_preview_image('./testdata/files/image.png')
+        create_courses_page.create_course_toolbar_view_component.click_create_course_button()
+        courses_list_page.course_view.check_visible(
+            index=0,
+            title="Pytest",
+            max_score="99",
+            min_score="9",
+            estimated_time="9 weeks"
+        )
+        courses_list_page.courses_view_menu.click_edit(index=0)
+        create_courses_page.create_course_form_component.fill(
+            title="Java",
+            estimated_time="6 days",
+            description="Java",
+            max_score="66",
+            min_score="6"
+        )
+        create_courses_page.create_course_toolbar_view_component.click_create_course_button()
+        courses_list_page.course_view.check_visible(
+            index=0,
+            title="Java",
+            max_score="66",
+            min_score="6",
+            estimated_time="6 days"
+        )
