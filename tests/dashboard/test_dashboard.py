@@ -3,7 +3,7 @@ import pytest
 import allure
 from tools.allure.tags import AllureTag
 from tools.allure.epics import AllureEpic
-from tools.allure.features import AllureFeatures
+from tools.allure.features import AllureFeature
 from tools.allure.stories import AllureStory
 from allure_commons.types import Severity
 
@@ -12,8 +12,11 @@ from allure_commons.types import Severity
 @pytest.mark.dashboard
 @allure.tag(AllureTag.REGRESSION, AllureTag.DASHBOARD)
 @allure.epic(AllureEpic.LMS)
-@allure.feature(AllureFeatures.DASHBOARD)
+@allure.feature(AllureFeature.DASHBOARD)
 @allure.story(AllureStory.DASHBOARD)
+@allure.parent_suite(AllureEpic.LMS)
+@allure.suite(AllureFeature.DASHBOARD)
+@allure.sub_suite(AllureStory.DASHBOARD)
 class TestDashboard:
     @allure.title('Check displaying of dashboard page')
     @allure.severity(Severity.NORMAL)
