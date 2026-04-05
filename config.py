@@ -27,6 +27,9 @@ class Settings(BaseSettings):
         env_nested_delimiter="."
     )
 
+    def get_base_url(self) -> str:
+        return f"{self.app_url}/"
+
     app_url: HttpUrl
     headless: bool
     browsers: list[Browser]
@@ -51,6 +54,5 @@ class Settings(BaseSettings):
             tracing_dir=tracing_dir,
             browser_state_file=browser_state_file
         )
-
 
 settings = Settings.initialize()

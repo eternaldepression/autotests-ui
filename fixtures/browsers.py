@@ -1,6 +1,5 @@
 import pytest
 from playwright.sync_api import Page, Playwright
-import allure
 
 from pages.authentication.registration_page import RegistrationPage
 from _pytest.fixtures import SubRequest
@@ -17,7 +16,7 @@ def chromium_page(request: SubRequest, playwright: Playwright) -> Page:
 @pytest.fixture(scope="session")
 def initialize_browser_state(playwright: Playwright):
     browser = playwright.chromium.launch(headless=False)
-    context = browser.new_context(storage_state='browser-state.json')
+    context = browser.new_context(storage_state='browser-state.json', base_url=settings.get_base_url())
     page = context.new_page()
 
     registration_page = RegistrationPage(page=page)
