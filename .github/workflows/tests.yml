@@ -1,5 +1,6 @@
 name: UI tests
 
+
 on:
   push:
     branches:
@@ -7,6 +8,7 @@ on:
   pull_request:
     branches:
       - main
+
 
 jobs:
   run-tests:
@@ -23,14 +25,14 @@ jobs:
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip  
+          pip install -r requirements.txt  
           playwright install
-          playwright install-deps
+          playwright install-deps 
 
       - name: Run Playwright tests with pytest and generate Allure results
         run: |
-          pytest -m regression --alluredir=./allure-results --numprocesses 2
+          pytest -m regression --alluredir=allure-results --numprocesses 2 
 
       - name: Get Allure history
         uses: actions/checkout@v4
@@ -40,7 +42,7 @@ jobs:
           ref: gh-pages
           path: gh-pages
 
-      - name: Allure Report action from marketplace
+      - name: Generates Allure Report with history
         uses: simple-elf/allure-report-action@v1.13
         if: always()
         with:
@@ -48,8 +50,9 @@ jobs:
           allure_history: allure-history
 
       - name: Deploy report to Github Pages
+        if: always()
         uses: peaceiris/actions-gh-pages@v4
-        env:
-          PERSONAL_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: allure-history
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
