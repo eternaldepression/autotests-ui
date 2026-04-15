@@ -33,7 +33,7 @@ jobs:
           CI: true
           HEADLESS: true
         run: |
-          pytest -m regression --alluredir=allure-results --numprocesses 2 --headless
+          pytest -m regression --alluredir=allure-results --numprocesses 2
 
       - name: Get Allure history
         uses: actions/checkout@v4
