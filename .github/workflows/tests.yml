@@ -50,6 +50,20 @@ jobs:
           allure_results: allure-results
           allure_history: allure-history
 
+      - name: Create gh-pages branch if it doesn't exist
+        if: always()
+        run: |
+          git fetch origin
+          if ! git ls-remote --heads origin gh-pages | grep -q gh-pages; then
+            git checkout --orphan gh-pages
+            git rm -rf .
+            echo "# Allure Report" > index.html
+            git add index.html
+            git commit -m "Initial gh-pages branch"
+            git push origin gh-pages
+            git checkout -
+          fi
+
       - name: Deploy report to Github Pages
         if: always()
         uses: peaceiris/actions-gh-pages@v4
