@@ -44,7 +44,7 @@ jobs:
 
       - name: Generate Coverage report
         run: |
-          ui-coverage tool save-report
+          ui-coverage-tool save-report
 
       - name: Cache Coverage history
         if: always()
