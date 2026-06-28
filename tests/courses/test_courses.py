@@ -70,7 +70,7 @@ class TestCourses:
             min_score="10",
             estimated_time="2 weeks"
         )
-    @allure.title('Edit course')
+
     def test_edit_course(self, create_courses_page: CreateCoursePage, courses_list_page: CoursesListPage):
         create_courses_page.visit(AppRoute.COURSES_CREATE)
         create_courses_page.create_course_form_component.fill(
